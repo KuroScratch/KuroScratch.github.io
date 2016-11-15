@@ -4,28 +4,10 @@
 		<meta charset="utf-8">
 		<title>Download_RAM2.0.exe</title>
 
-		<style type="text/css">
-			
-			.left {
-				width: 40%;
-    			float: left;
-    			min-height: 700px;
-			}
+		<link rel="stylesheet" type="text/css" href="clicker.css">
+		<script type="text/javascript" src="clicker.js"></script>
 
-			.right {
-				margin-left: 45%;
-				min-height: 700px;
-			}
 
-			#easter:hover {
-				content: url("http://puu.sh/s9Ifx.png");
-			}
-
-			#comic:hover {
-				content: url(https://d30womf5coomej.cloudfront.net/c/99/c2/dd/b2/8a7e73acee9d4116b2bb770898dae8f6.gif);
-			}
-
-		</style>
 	</head>
 
 
@@ -65,100 +47,8 @@
 			<img id="easter" align="right" src="https://puu.sh/s9Ie5.png" 
 			onclick="play()">
 		</footer>
-		
 
 		<script type="text/javascript">
-
-			// main button label
-			var button = "Click to download RAM";
-
-			// downloaded amount of RAM in Byte
-			var dld = 0;
-
-			// RAM increase in Byte
-			var perclick = 128;
-			var speed = 256;
-
-			// upgrade costs
-			var speedupgrade = 1024*16;
-			var clickupgrade = 1024*8;
-
-			// main button clicked once?
-			var started = false;
-
-			// returns unit for given number
-			function whatunit(number) {
-				if (number > Math.pow(2,80)) {
-					return "YB (YottaByte)";
-				} else {
-					if (number > Math.pow(2, 70)) {
-						return "ZT (ZettaByte)";
-					} else {
-						if (number > Math.pow(2, 60)) {
-							return "EB (ExaByte)";
-						} else {
-							if (number > Math.pow(2, 50)) {
-								return "PB (PetaByte)";
-							} else {
-								if (number > Math.pow(2, 40)) {
-									return "TB";
-								} else {
-									if (number > Math.pow(2, 30)) {
-										return "GB";
-									} else {
-										if (number > Math.pow(2, 20)) {
-											return "MB";
-										} else {
-											if (number > Math.pow(2, 10)) {
-												return "KB";
-											} else {
-												return "Byte";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-
-			// converts and adds unit to given number
-			function converter(number) {
-				var temp = number;
-				var unit = whatunit(number);
-
-				switch (unit) {
-					case "YB (YottaByte)": 
-						return (temp / Math.pow(2, 80)).toFixed(2).replace(/\.00$/,"") + unit;
-						break;
-					case "ZT (ZettaByte)": 
-						return (temp / Math.pow(2, 70)).toFixed(2).replace(/\.00$/,"") + unit;
-						break;
-					case "EB (ExaByte)": 
-						return (temp / Math.pow(2, 60)).toFixed(2).replace(/\.00$/,"") + unit;
-						break;
-					case "PB (PetaByte)":
-						return (temp / Math.pow(2, 50)).toFixed(2).replace(/\.00$/,"") + unit;
-						break;
-					case "TB":
-						return (temp / Math.pow(2, 40)).toFixed(2).replace(/\.00$/,"") + unit;
-						break;
-					case "GB":
-						return (temp / Math.pow(2, 30)).toFixed(2).replace(/\.00$/,"") + unit;
-						break;
-					case "MB":
-						return (temp / Math.pow(2, 20)).toFixed(2).replace(/\.00$/,"") + unit;
-						break;
-					case "KB":
-						return (temp / Math.pow(2, 10)).toFixed(2).replace(/\.00$/,"") + unit;
-						break;
-					case "Byte":
-						return temp.toFixed(2).replace(/\.00$/,"") + unit;
-						break;
-				}
-			}
-
 			// initiation
 			document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";	
 			document.getElementById("dlspeed").innerHTML = "Current download speed: " + converter(speed) + "/s";
@@ -167,78 +57,8 @@
 
 			document.getElementById("speedbtn").innerHTML = converter(speedupgrade) + " RAM";
 			document.getElementById("clickbtn").innerHTML = converter(clickupgrade) + " RAM";
-			 
-			// main button
-			function but() {
-				if (started) {
-					dld = dld + perclick;
-					document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";
-				} else {
-					started = true;
-					button = "Click to download faster";
-					document.getElementById("button").innerHTML = button;
-					document.getElementById("dlpclick").innerHTML = "Downloading " + converter(perclick) + " per click"
-				}
-			}
-
-			// speedupgrade button
-			function incrspd() {
-				if (dld > speedupgrade) {
-					speed = speed * 1.4;
-					dld = dld - speedupgrade;
-					speedupgrade = speedupgrade * 1.8;
-					document.getElementById("dlspeed").innerHTML = "Current download speed: " + converter(speed) + "/s";
-					document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";
-					document.getElementById("speedbtn").innerHTML = converter(speedupgrade) + " RAM";
-				} else {
-					return window.alert("Not enough RAM!");
-				}
-			}
-
-			// clickupgrade button
-			function incrclck() {
-				if (dld > clickupgrade) {
-					perclick = perclick * 1.5;
-					dld = dld - clickupgrade;
-					clickupgrade = clickupgrade * 2.5;
-					document.getElementById("dlpclick").innerHTML = "Downloading " + converter(perclick) + " per click"
-					document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";
-					document.getElementById("clickbtn").innerHTML = converter(clickupgrade) + " RAM";
-
-				} else {
-					return window.alert("Not enough RAM!")
-				}
-			}
-
-			// increase per second
-			setInterval(
-				function () {
-					if (started) {
-						dld = dld + speed;
-						document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";
-					}
-				}
-				, 1000) 
-
-
-
-			
-			// easter egg sound
-			function play() {
-			  	var audio = document.getElementById("audio");
-			  	audio.volume = 0.7;
-			  	audio.play();
-			  }
-
-
-
-			/* -----------------------------TEST------------------------------ */
-
-			//test
-
-
-
 		</script>
+		
 
 		<audio id="audio" src="http://puu.sh/sdFZn.mp3"></audio>
 

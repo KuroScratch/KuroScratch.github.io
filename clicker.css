@@ -1,0 +1,18 @@
+.left {
+	width: 40%;
+	float: left;
+	min-height: 700px;
+}
+
+.right {
+	margin-left: 45%;
+	min-height: 700px;
+}
+
+#easter:hover {
+	content: url("http://puu.sh/s9Ifx.png");
+}
+
+#comic:hover {
+	content: url(https://d30womf5coomej.cloudfront.net/c/99/c2/dd/b2/8a7e73acee9d4116b2bb770898dae8f6.gif);
+}
