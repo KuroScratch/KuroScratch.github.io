@@ -2,7 +2,7 @@
 var button = "Click to download RAM";
 
 // downloaded amount of RAM in Byte
-	var dld = 0;
+var dld = 0;
 
 // RAM increase in Byte
 var perclick = 128;
@@ -14,6 +14,11 @@ var clickupgrade = 1024*8;
 
 // main button clicked once?
 var started = false;
+
+// total
+var total = 0;
+var timesclicked = 0;
+var timewasted = 0;
 
 // returns unit for given number
 function whatunit(number) {
@@ -91,22 +96,27 @@ function converter(number) {
 // main button
 function but() {
 	if (started) {
-		dld = dld + perclick;
+		dld += perclick;
+		total += perclick;
+		timesclicked++;
 		document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";
+		document.getElementById("sum").innerHTML = "You wasted " + timewasted + " seconds clicked " + timesclicked + " times and downloaded a total of " + converter(total) + " of RAM.";
 	} else {
 		started = true;
 		button = "Click to download faster";
+		timesclicked ++;
 		document.getElementById("button").innerHTML = button;
 		document.getElementById("dlpclick").innerHTML = "Downloading " + converter(perclick) + " per click"
+		document.getElementById("sum").innerHTML = "You wasted " + timewasted + " seconds clicked " + timesclicked + " times and downloaded a total of " + converter(total) + " of RAM.";
 	}
 }
 
 // speedupgrade button
 function incrspd() {
 	if (dld > speedupgrade) {
-		speed = speed * 1.4;
-		dld = dld - speedupgrade;
-		speedupgrade = speedupgrade * 1.8;
+		speed *= 1.4;
+		dld -= speedupgrade;
+		speedupgrade *= 1.8;
 		document.getElementById("dlspeed").innerHTML = "Current download speed: " + converter(speed) + "/s";
 		document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";
 		document.getElementById("speedbtn").innerHTML = converter(speedupgrade) + " RAM";
@@ -118,9 +128,9 @@ function incrspd() {
 // clickupgrade button
 function incrclck() {
 	if (dld > clickupgrade) {
-		perclick = perclick * 1.5;
-		dld = dld - clickupgrade;
-		clickupgrade = clickupgrade * 2.5;
+		perclick *= 1.5;
+		dld -= clickupgrade;
+		clickupgrade *= 2.5;
 		document.getElementById("dlpclick").innerHTML = "Downloading " + converter(perclick) + " per click"
 		document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";
 		document.getElementById("clickbtn").innerHTML = converter(clickupgrade) + " RAM";
@@ -134,8 +144,11 @@ function incrclck() {
 setInterval(
 	function () {
 		if (started) {
-			dld = dld + speed;
+			dld += speed;
+			total += speed;
+			timewasted++;
 			document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";
+			document.getElementById("sum").innerHTML = "You wasted " + timewasted + " seconds clicked " + timesclicked + " times and downloaded a total of " + converter(total) + " of RAM.";
 		}
 	}
 	, 1000) 
