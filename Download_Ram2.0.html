@@ -24,16 +24,11 @@
 			<p id="dlspeed"></p>
 			<p id="downloaded"></p>
 
-			<button id="button" onclick="but()"></button>
+			<img id="RAMbut" src="RAMsmall.png" onclick="but()">
 
-			<br>
-			<br>
-			<br>
-
-			<img id="comic" src="https://d30womf5coomej.cloudfront.net/c/cf/48/8a/5f/82cb21fc6c9f4b7886b7bf196472fe93.jpg">
+			
 
 		</div>
-
 
 		<div class="right">
 			
@@ -43,7 +38,22 @@
 			<p id="dlpclick"></p>
 			<p id="sum"></p>
 
+
+			<br>
+			<br>
+			<br>
+
+			<img id="comic" src="https://d30womf5coomej.cloudfront.net/c/cf/48/8a/5f/82cb21fc6c9f4b7886b7bf196472fe93.jpg">
 		</div>
+
+		<script type="text/javascript">
+			// initiation
+			document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";	
+			document.getElementById("dlspeed").innerHTML = "Current download speed: " + converter(speed) + "/s";
+
+			document.getElementById("speedbtn").innerHTML = converter(speedupgrade) + " RAM";
+			document.getElementById("clickbtn").innerHTML = converter(clickupgrade) + " RAM";
+		</script>
 
 
 		<footer>
@@ -51,17 +61,6 @@
 			onclick="play()">
 		</footer>
 
-		<script type="text/javascript">
-			// initiation
-			document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";	
-			document.getElementById("dlspeed").innerHTML = "Current download speed: " + converter(speed) + "/s";
-
-			document.getElementById("button").innerHTML = button;
-
-			document.getElementById("speedbtn").innerHTML = converter(speedupgrade) + " RAM";
-			document.getElementById("clickbtn").innerHTML = converter(clickupgrade) + " RAM";
-		</script>
-		
 
 		<audio id="audio" src="http://puu.sh/sdFZn.mp3"></audio>
 

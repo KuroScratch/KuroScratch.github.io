@@ -16,3 +16,15 @@
 #comic:hover {
 	content: url(https://d30womf5coomej.cloudfront.net/c/99/c2/dd/b2/8a7e73acee9d4116b2bb770898dae8f6.gif);
 }
+
+#RAMbut {
+	cursor: pointer;
+}
+
+#RAMbut:hover {
+	content: url("RAM.png");
+}
+
+#RAMbut:active {
+	content: url("RAMsmall.png");
+}

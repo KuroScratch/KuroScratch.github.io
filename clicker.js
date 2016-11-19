@@ -1,6 +1,3 @@
-// main button label
-var button = "Click to download RAM";
-
 // downloaded amount of RAM in Byte
 var dld = 0;
 
@@ -103,9 +100,7 @@ function but() {
 		document.getElementById("sum").innerHTML = "You wasted " + timewasted + " seconds clicked " + timesclicked + " times and downloaded a total of " + converter(total) + " of RAM.";
 	} else {
 		started = true;
-		button = "Click to download faster";
 		timesclicked ++;
-		document.getElementById("button").innerHTML = button;
 		document.getElementById("dlpclick").innerHTML = "Downloading " + converter(perclick) + " per click"
 		document.getElementById("sum").innerHTML = "You wasted " + timewasted + " seconds clicked " + timesclicked + " times and downloaded a total of " + converter(total) + " of RAM.";
 	}
@@ -134,7 +129,6 @@ function incrclck() {
 		document.getElementById("dlpclick").innerHTML = "Downloading " + converter(perclick) + " per click"
 		document.getElementById("downloaded").innerHTML = "Downloaded " + converter(dld) + " of RAM.";
 		document.getElementById("clickbtn").innerHTML = converter(clickupgrade) + " RAM";
-
 	} else {
 		return window.alert("Not enough RAM!")
 	}
