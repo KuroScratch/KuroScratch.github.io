@@ -18,6 +18,7 @@ header h1 {
 	color: white;
 	top: 50%;
 	width: 100%;
+	transform: translateY(-50%);
 	text-align: center;
 }
 
@@ -29,14 +30,19 @@ header a {
 	color: white;
 	font-size: 5vh;
 	text-align: center;
+	text-decoration: none;
 }
 
 #stuff {
 	font-family: Futura, "Segoe UI Semibold";
-	width: 100%;
 	top: 100%;
 	position: absolute;
 	min-height: 100%;
+	margin: 10px
+}
+
+header a:hover span {
+	text-decoration: underline;
 }
 
 p {
