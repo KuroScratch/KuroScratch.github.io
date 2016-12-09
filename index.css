@@ -41,7 +41,7 @@ header a {
 	top: 100%;
 	position: absolute;
 	min-height: 100%;
-	margin: 10px
+	margin-top: 10px;
 }
 
 header a:hover span {
