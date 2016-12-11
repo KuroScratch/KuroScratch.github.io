@@ -28,3 +28,7 @@
 #RAMbut:active {
 	content: url("RAMsmall.png");
 }
+
+footer {
+	min-height: 300px;
+}
