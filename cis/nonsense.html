@@ -8,10 +8,26 @@
 	</head>
 
 	<body>
+		
 		<header>
 			<p>Days without cis nonsense:</p>
 			<h1 id="counter">0</h1>
 		</header>
+
+		<script type="text/javascript">
+
+			var days = 0;
+
+			var noCisNonsense = false;
+
+			window.onload = function () {
+				if (noCisNonsense) {
+					days++;
+				}
+				document.getElementById("counter").innerHTML = days;
+			}
+
+		</script>
 
 	</body>
 
