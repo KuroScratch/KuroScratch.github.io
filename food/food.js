@@ -24,9 +24,7 @@ function foodomizer() {
 	numberArray();
 
 	for (var i = 0; i < 5; i++) {
-		console.log(i);
 		foods += food[random[i]] + "<br>";
-		console.log(food[random[i]]);
 	}
 
 		document.getElementById("out").innerHTML = foods;
