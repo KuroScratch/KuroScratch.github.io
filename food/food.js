@@ -33,6 +33,11 @@ function foodomizer() {
 
 }
 
+// Ü, ü     \u00dc, \u00fc
+// Ä, ä     \u00c4, \u00e4
+// Ö, ö     \u00d6, \u00f6
+// ß        \u00df
+
 
 var food = [
 "Pancakes",
@@ -43,12 +48,12 @@ var food = [
 "Nudelauflauf",
 "Mac'n'Cheese",
 "Maultaschen",
-"Sp�tzle",
+"Sp\u00e4tzle",
 "Gebratener Reis",
 "Risotto", 
 "Curry",
 "Ofenkartoffeln",
-"Gem�sepfanne",
+"Gem\u00fcsepfanne",
 "Schnitzel",
 "Was mit Fisch",
 "Tomate-Mozzarella Huhn",
