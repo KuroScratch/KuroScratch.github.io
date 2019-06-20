@@ -35,6 +35,23 @@ header h1 {
 	width: 100%;
 	transform: translateY(-50%);
 	text-align: center;
+	z-index: 5;
+}
+
+#counter2 {
+	transform: translateY(-150%);
+	z-index: 10;
+	opacity: 0;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+
+@keyframes fadeout {
+	from { opacity: 1; }
+    to   { opacity: 0.1; }
 }
 
 header a {
