@@ -12,10 +12,44 @@
 		<header>
 			<p>Days without cis nonsense:</p>
 			<h1 id="counter">0</h1>
+			<h1 id="counter2">1</h1>
 		</header>
 
 		<script type="text/javascript">
-
+			
+			function anim(begin, end, seconds, elem, callback) {
+				var step = (end - begin) / seconds / 20;
+				var counter = window.setInterval(function() {
+					console.log(begin);
+					elem.style.opacity = begin;
+					if(Math.abs(begin - end) < 0.01 || 
+					(step > 0 && begin >= end) || 
+					(step < 0 && begin <= end)) {
+						window.clearInterval(counter);
+						callback();
+					}
+					begin += step;
+				}, 50);
+			}
+			
+			
+			function almostChange() {
+				var zero = document.getElementById("counter");
+				var one = document.getElementById("counter2");
+				//zero.style.opacity = 0;
+				//one.style.opacity = 0;
+				//zero.style.opacity = 1;
+				//one.style.animation = "fadein 2s";
+				//zero.style.animation = "fadeout 2s";
+				//one.style.opacity = 0;
+				//zero.style.opacity = 1;
+				anim(1, 0.2, 0.8, zero, function() {});
+				anim(0, 0.8, 0.8, one, function() {
+					zero.style.opacity = 1;
+					one.style.opacity = 0;
+				});
+			}
+			
 			var days = 0;
 
 			var noCisNonsense = false;
@@ -25,6 +59,11 @@
 					days++;
 				}
 				document.getElementById("counter").innerHTML = days;
+				window.setInterval(function() {
+					if(Math.random() > 0.7) {
+						almostChange();
+					}
+				}, 3000);
 			}
 
 		</script>
